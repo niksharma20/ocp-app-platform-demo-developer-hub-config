@@ -81,6 +81,10 @@ data:
       - package: ref://backstage-plugin-catalog-backend-module-gitlab
         enabled: true
 
+      # RBAC page (Administration > RBAC; menu entry comes with the 2.1 default config)
+      - package: ref://backstage-community-plugin-rbac
+        enabled: true
+
       # Global header: on by default in 2.1; launcher links are in app-config
       - package: ref://red-hat-developer-hub-backstage-plugin-global-header
         enabled: true

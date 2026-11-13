@@ -43,6 +43,8 @@ spec:
     extraFiles:
       mountPath: /opt/app-root/src
       configMaps:
+        # rbac-policy.csv and rbac-conditional-policies.yaml for permission.rbac
+        - name: rbac-policy
         # Replaces the operator's bundled lightspeed-stack.yaml so the
         # assistant uses the platform's LiteLLM endpoint
         - name: intelligent-assistant-stack
