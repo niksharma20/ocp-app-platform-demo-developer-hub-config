@@ -209,7 +209,11 @@ data:
               timeout: { minutes: 1 }
               initialDelay: { seconds: 15 }
         gitlab:
-          gitlab:
+          # Developer Hub 2.1: the GitLab catalog module's default config (catalog
+          # index) defines provider "default" with host ${GITLAB_HOST}. Using the
+          # same id lets this block fill it in; a second id leaves "default"
+          # without a host and stops the backend.
+          default:
             host: {{ .Values.gitlab.host }}
             branch: main
             fallbackBranch: main
