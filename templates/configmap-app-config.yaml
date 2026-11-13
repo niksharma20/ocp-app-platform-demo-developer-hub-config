@@ -151,8 +151,13 @@ data:
             clientId: ${OAUTH_CLIENT_ID}
             clientSecret: ${OAUTH_CLIENT_SECRET}
             signIn:
+              # Developer Hub 2.1's OIDC provider is the upstream module: the
+              # RHDH-only preferredUsernameMatchingUserEntityName resolver is
+              # gone. Workshop users have verified emails <user>@rhdemo.com,
+              # which the Keycloak sync copies into the catalog profile.
               resolvers:
-                - resolver: preferredUsernameMatchingUserEntityName
+                - resolver: emailMatchingUserEntityProfileEmail
+                - resolver: emailLocalPartMatchingUserEntityName
     
     backend:
       baseUrl: https://{{ .Values.backstage.host }}
