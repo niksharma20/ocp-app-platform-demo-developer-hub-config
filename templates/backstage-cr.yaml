@@ -58,6 +58,16 @@ spec:
     patch:
       spec:
         replicas: 1
+        # Stop the old pod before starting the new one. With RollingUpdate two
+        # backends run during every rollout: they share the plugin volume (the
+        # second waits for its lock) and hold ~40 Postgres connections each, so
+        # the 100-connection database has none left for the orchestrator
+        # (sonataflow "Acquisition timeout"; seen on hgltw, 13 Nov 2026).
+        # Syntax from rhdh-operator docs/configuration.md (discriminated unions).
+        strategy:
+          type: Recreate
+          rollingUpdate:
+            $patch: delete
         template:
           spec:
             volumes:
