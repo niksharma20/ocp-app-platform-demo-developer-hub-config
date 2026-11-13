@@ -28,6 +28,11 @@ data:
       - package: ref://red-hat-developer-hub-backstage-plugin-quickstart
         enabled: false
 
+      # Sign-in with Keycloak (app-config auth.providers.oidc, signInPage: oidc).
+      # Built into the backend up to 1.9; a plugin, off by default, in 2.1.
+      - package: ref://backstage-plugin-auth-backend-module-oidc-provider
+        enabled: true
+
       # Bulk import plugins
       - package: ref://red-hat-developer-hub-backstage-plugin-bulk-import-backend
         enabled: true
